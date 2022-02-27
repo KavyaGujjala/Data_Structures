@@ -1,0 +1,20 @@
+class Node:
+    def __init__(self, val):
+        self.data = val
+        self.next = None
+class linked_list:
+    def __init__(self):
+        self.head = None
+    def print_list(self):
+        temp = self.head
+        while temp:
+            print(temp.data)
+            temp = temp.next
+if __name__== '__main__':
+    e1 = linked_list()
+    e1.head = Node(10)
+    e2 = Node(20)
+    e3 = Node(30)
+    e1.head.next = e2
+    e2.next = e3
+    e1.print_list()
