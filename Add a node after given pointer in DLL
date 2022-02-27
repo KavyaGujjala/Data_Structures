@@ -1,0 +1,13 @@
+def insert_after(self, prev_node, new_data):
+    if prev_node is None:
+        print('no such node in DLL')
+        
+    n1 = Node(new_data)
+    
+    n1.next = prev_node.next
+    prev_node.next = n1
+    n1.prev = prev_node
+    
+    if n1.next is not None:
+        n1.next.prev = n1
+    
