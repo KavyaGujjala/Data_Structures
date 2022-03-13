@@ -1,0 +1,47 @@
+class TrieNode:
+    def __init__(self):
+        self.children = [None]*26
+        self.isendofword = False
+        
+class Trie:
+    def __init__(self):
+        self.root = self.getnode()
+        
+    def getnode(self):
+        return TrieNode()
+    
+    def char_to_index(self, char):
+        return ord(char)-ord('a')
+    
+    def insert_key(self, key):
+        trie_crawl = self.root
+        n=len(key)
+        for i in range(n):
+            idx = self.char_to_index(key[i])
+            if not trie_crawl.children[idx]:
+                trie_crawl.children[idx] = self.getnode()
+            trie_crawl = trie_crawl.children[idx]
+            
+        trie_crawl.isendofword = True
+        
+    def search_key(self, key):
+        trie_crawl = self.root
+        n = len(key)
+        for i in range(n):
+            idx = self.char_to_index(key[i])
+            if not trie_crawl.children[idx]:
+                return False
+            trie_crawl = trie_crawl.children[idx]
+            
+        return trie_crawl.isendofword
+        
+keys = ["the","a","there","anaswe","any","by","their"]
+
+# Trie object
+t = Trie()
+
+# Construct trie
+for key in keys:
+    t.insert_key(key)
+    
+t.search_key("their")
